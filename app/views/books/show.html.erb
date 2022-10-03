@@ -4,6 +4,6 @@
 <p>Body</p>
 <p><%= @book.body %></p>
 
-<a href = /books/edit/:id>'Edit'</a>
-" | "
+<%= link_to 'Edit' , edit_book_path(@book) %>
+ |
 <a href = /books/index>'Back'</a>
