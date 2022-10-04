@@ -16,7 +16,7 @@
 			<td><%= book.body %></td>
 			<td><%= link_to "show" , book_path(book.id) %></td>
 			<td><%= link_to "edit" , edit_book_path(book.id) %></td>
-			<td><%= link_to "destroy", destroy_book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+			<td><%= link_to "destroy", delete_book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
 		</tr>
 		<% end %>
 	</tbody>
@@ -24,6 +24,18 @@
 
 <!--新規-->
 <h3>New book</h3>
+
+
+<!--エラー表示-->
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 
 <%= form_for(@book) do |f| %>
 
