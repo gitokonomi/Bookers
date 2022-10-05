@@ -1,3 +1,9 @@
+<!--削除成功時のフラッシュメッセージ-->
+<div>
+  <%= flash[:notice] %>
+<div>
+
+
 <h1>Books</h1>
 
 <!--一覧-->
@@ -14,16 +20,16 @@
 		<tr>
 			<td><%= book.title %></td>
 			<td><%= book.body %></td>
-			<td><%= link_to "show" , book_path(book.id) %></td>
-			<td><%= link_to "edit" , edit_book_path(book.id) %></td>
-			<td><%= link_to "destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure？" %></td>
+			<td><%= link_to "Show" , book_path(book.id) %></td>
+			<td><%= link_to "Edit" , edit_book_path(book.id) %></td>
+			<td><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure？" %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
 
 <!--新規-->
-<h3>New book</h3>
+<h2>New book</h2>
 
 
 <!--エラー表示-->
@@ -39,12 +45,17 @@
 
 <%= form_with model:@book do |f| %>
 
-	<%= f.label :Title %><br/>
+	<div class = field>
+		<%= f.label :Title %><br/>
 	<%= f.text_field :title %><br/>
+	</div>
 
-	<%= f.label :Body %><br/>
+	<div class = field>
+		<%= f.label :Body %><br/>
 	<%= f.text_area :body %>
+	</div>
 
-	<br><%= f.submit 'Create Book' %></br>
-
+	<div class = actions>
+		<%= f.submit 'Create Book' %>
+	</div>
 <% end %>
